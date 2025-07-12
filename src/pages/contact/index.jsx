@@ -656,7 +656,7 @@ const Contact = () => {
                 <div className="flex items-center space-x-3">
                   <Icon name="Mail" size={20} className="text-accent" />
                   <div>
-                    <p className="font-medium text-primary-900 mb-1">Email</p>
+                    <p className="font-medium text-primary-900 mb-1">Email ID</p>
                     <p className="text-text-secondary">{contactInfo.email}</p>
                   </div>
                 </div>

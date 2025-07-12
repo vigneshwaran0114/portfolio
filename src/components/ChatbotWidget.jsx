@@ -225,29 +225,16 @@ const ChatbotWidget = () => {
     ]);
 
     try {
-      const apiKey = process.env.OPENROUTER_API_KEY;
-      const response = await axios.post(
-        'https://openrouter.ai/api/v1/chat/completions',
-        {
-          model: 'mistralai/mistral-7b-instruct',
-          messages: [
-            { role: "system", content: "You are a helpful assistant for a developer portfolio website." },
-            ...messages.filter(m => m.type === 'user' || m.type === 'bot').map(m => ({
-              role: m.type === 'user' ? 'user' : 'assistant',
-              content: m.message
-            })),
-            { role: "user", content: userMsg.message }
-          ],
-          max_tokens: 512,
-          temperature: 0.7
-        },
-        {
-          headers: {
-            'Authorization': `Bearer ${apiKey}`,
-            'Content-Type': 'application/json'
-          }
-        }
-      );
+      const response = await axios.post('/.netlify/functions/chatbot', {
+        messages: [
+          { role: "system", content: "You are a helpful assistant for a developer portfolio website." },
+          ...messages.filter(m => m.type === 'user' || m.type === 'bot').map(m => ({
+            role: m.type === 'user' ? 'user' : 'assistant',
+            content: m.message
+          })),
+          { role: "user", content: userMsg.message }
+        ]
+      });
 
       // Remove the loading message and add the real reply
       setMessages(prev => [
