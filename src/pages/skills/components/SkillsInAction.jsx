@@ -289,7 +289,7 @@ const reverse = () => timeline.reverse();`,
             </div>
 
             {/* Code Display */}
-            <div className="bg-primary-900 rounded-xl overflow-hidden">
+            <div className="bg-primary-900 rounded-xl overflow-hidden min-w-0">
               <div className="flex items-center justify-between px-6 py-4 bg-primary-800">
                 <div className="flex items-center space-x-3">
                   <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${demoProjects[activeDemo].color} flex items-center justify-center`}>
@@ -306,9 +306,8 @@ const reverse = () => timeline.reverse();`,
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
               </div>
-              
-              <div className="p-6 overflow-x-auto">
-                <pre className="text-sm text-primary-100 font-mono leading-relaxed">
+              <div className="p-4 sm:p-6 overflow-x-auto w-full">
+                <pre className="text-sm text-primary-100 font-mono leading-relaxed break-words whitespace-pre-wrap min-w-0">
                   <code>{demoProjects[activeDemo].codeSnippet}</code>
                 </pre>
               </div>

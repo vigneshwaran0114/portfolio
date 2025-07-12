@@ -82,10 +82,10 @@ const Experience = () => {
       logo: "assets/images/pondybiz.jpg",
       description: `Worked with startups and small businesses to build landing pages, business websites, and simple dashboards. Focused on clean UI and responsive layouts.`,
       achievements: [
-        { metric: "10+", description: "Websites launched" },
+        { metric: "3+", description: "Websites launched" },
         { metric: "90%", description: "Client satisfaction rate" },
         { metric: "2", description: "Long-term client relationships" },
-        { metric: "100%", description: "Mobile responsive designs" },
+        { metric: "99%", description: "Mobile responsive designs" },
       ],
       technologies: ["HTML", "CSS", "JavaScript", "Bootstrap", "VueJs"],
       // projects: [
