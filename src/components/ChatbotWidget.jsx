@@ -225,10 +225,11 @@ const ChatbotWidget = () => {
     ]);
 
     try {
-      // Call Netlify serverless function instead of OpenRouter API directly
+      const apiKey = process.env.OPENROUTER_API_KEY;
       const response = await axios.post(
-        '/.netlify/functions/chatbot',
+        'https://openrouter.ai/api/v1/chat/completions',
         {
+          model: 'mistralai/mistral-7b-instruct',
           messages: [
             { role: "system", content: "You are a helpful assistant for a developer portfolio website." },
             ...messages.filter(m => m.type === 'user' || m.type === 'bot').map(m => ({
@@ -236,7 +237,15 @@ const ChatbotWidget = () => {
               content: m.message
             })),
             { role: "user", content: userMsg.message }
-          ]
+          ],
+          max_tokens: 512,
+          temperature: 0.7
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json'
+          }
         }
       );
 
@@ -251,6 +260,8 @@ const ChatbotWidget = () => {
         }
       ]);
     } catch (err) {
+      // Log error for debugging
+      console.error('Chatbot API error:', err.response ? err.response.data : err.message);
       setMessages(prev => [
         ...prev.filter(m => !m.loading),
         {

@@ -70,7 +70,7 @@ const Contact = () => {
 
   const socialLinks = [
     {
-      name: "Email",
+      name: "EmailID",
       icon: "Mail",
       href: "mailto:vigneshwaran.0114@gmail.com",
       color: "text-red-600",
