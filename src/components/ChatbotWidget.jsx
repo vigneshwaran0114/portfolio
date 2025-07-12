@@ -225,12 +225,10 @@ const ChatbotWidget = () => {
     ]);
 
     try {
-      // Get a free API key from https://openrouter.ai/
-      const OPENROUTER_API_KEY = "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"; // <-- Replace with your OpenRouter API key
+      // Call Netlify serverless function instead of OpenRouter API directly
       const response = await axios.post(
-        'https://openrouter.ai/api/v1/chat/completions',
+        '/.netlify/functions/chatbot',
         {
-          model: "mistralai/mistral-7b-instruct", // Free model
           messages: [
             { role: "system", content: "You are a helpful assistant for a developer portfolio website." },
             ...messages.filter(m => m.type === 'user' || m.type === 'bot').map(m => ({
@@ -238,15 +236,7 @@ const ChatbotWidget = () => {
               content: m.message
             })),
             { role: "user", content: userMsg.message }
-          ],
-          max_tokens: 512,
-          temperature: 0.7
-        },
-        {
-          headers: {
-            'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-            'Content-Type': 'application/json'
-          }
+          ]
         }
       );
 
