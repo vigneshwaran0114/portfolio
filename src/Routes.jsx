@@ -3,12 +3,11 @@ import { BrowserRouter, Routes as RouterRoutes, Route } from "react-router-dom";
 import ScrollToTop from "components/ScrollToTop";
 import ErrorBoundary from "components/ErrorBoundary";
 import Header from "components/ui/Header";
-import NotFound from "pages/NotFound";
-import Homepage from "pages/homepage-motion-driven-portfolio";
-import AboutInteractiveJourney from "pages/about-interactive-journey";
-import ExperienceTimeline from "pages/experience-timeline";
-import ContactCollaborationHub from "pages/contact-collaboration-hub";
-import PortfolioProjectUniverse from "pages/portfolio-project-universe";
+import Homepage from "pages/homepage";
+import About from "pages/about";
+import Skills from "pages/skills";
+import Experience from "pages/experience";
+import Contact from "pages/contact";
 
 const Routes = () => {
   return (
@@ -18,12 +17,11 @@ const Routes = () => {
         <Header />
         <RouterRoutes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/homepage-motion-driven-portfolio" element={<Homepage />} />
-          <Route path="/about-interactive-journey" element={<AboutInteractiveJourney />} />
-          <Route path="/experience-timeline" element={<ExperienceTimeline />} />
-          <Route path="/contact-collaboration-hub" element={<ContactCollaborationHub />} />
-          <Route path="/portfolio-project-universe" element={<PortfolioProjectUniverse />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/contact" element={<Contact />} />
         </RouterRoutes>
       </ErrorBoundary>
     </BrowserRouter>
